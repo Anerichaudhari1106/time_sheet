@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+
+access_project_master,project.master,model_project_master,,1,1,1,1
+access_task_master,task.master,model_task_master,,1,1,1,1
+access_timesheet_line,timesheet.line,model_timesheet_line,,1,1,1,1
+
+
+
+
+
+

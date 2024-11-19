@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="task_master_tree_view" model="ir.ui.view">
+            <field name="name">task.master.view.tree</field>
+             <field name="model">task.master</field>
+            <field name="arch" type="xml">
+                <tree string="Work Location">
+                    <field name="name"/>
+                    <field name="task_description"/>
+                    <field name="associated_project"/>
+                    <field name="task_status"
+                    decoration-success="task_status == 'done'"
+                    decoration-info="task_status == 'progress'"
+                    decoration-warning="task_status == 'notstarted'"
+                    widget="badge"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+        <record id="task_master_form_view" model="ir.ui.view">
+            <field name="name">task.master.view.form</field>
+            <field name="model">task.master</field>
+            <field name="arch" type="xml">
+
+                <form string="Work Location">
+                    <group>
+                        <field name="name"/>
+                        <field name="task_description"/>
+                        <field name="associated_project"/>
+                        <field name="task_status"/>
+                    </group>
+                <notebook>
+                    <page string="Timesheet Lines" name="timesheet_lines">
+                        <field name="timesheet_line_ids">
+                            <tree editable="bottom">
+                                <field name="date"/>
+                                <field name="description"/>
+                                <field name="time"/>
+                                <field name="task_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+                </form>
+            </field>
+    </record>
+
+
+<record id="action_task_master" model="ir.actions.act_window">
+        <field name="name">Task Plans</field>
+        <field name="res_model">task.master</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+     <menuitem id="menu_action_task_master"
+        name="Task"
+        parent="menu_action_project_master_parent"
+        action="action_task_master"
+        />
+</odoo>

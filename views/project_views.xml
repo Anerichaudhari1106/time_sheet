@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="project_master_tree_view" model="ir.ui.view">
+            <field name="name">project.master.view.tree</field>
+            <field name="model">project.master</field>
+            <field name="arch" type="xml">
+                <tree string="Work Location">
+                    <field name="name"/>
+                    <field name="project_description"/>
+                    <field name="associated_tasks" />
+                </tree>
+            </field>
+        </record>
+    </data>
+    <record id="project_master_form_view" model="ir.ui.view">
+        <field name="name">project.master.view.form</field>
+        <field name="model">project.master</field>
+        <field name="arch" type="xml">
+            <form string="Work Location">
+                <group>
+                    <field name="name"/>
+                    <field name="project_description"/>
+                    <field name="associated_tasks" widget="many2many_tags"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_project_master" model="ir.actions.act_window">
+        <field name="name">Project Plans</field>
+        <field name="res_model">project.master</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+    <menuitem id="menu_action_project_master_parent"
+              name="Project model"
+              action="action_project_master"/>
+    <menuitem id="menu_action_project_master"
+              name="Project"
+              parent="menu_action_project_master_parent"
+              action="action_project_master"
+
+    />
+</odoo>
